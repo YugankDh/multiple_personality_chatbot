@@ -2,8 +2,18 @@ from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 import streamlit as st
+import os
 
 load_dotenv()
+
+def load_secret(name):
+    try:
+        if name in st.secrets:
+            os.environ[name] = st.secrets[name]   
+    except Exception:
+        pass  
+
+load_secret("GROQ_API_KEY")
 
 model = ChatGroq(
     model="qwen/qwen3.8-27b"
