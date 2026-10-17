@@ -16,7 +16,8 @@ def load_secret(name):
 load_secret("GROQ_API_KEY")
 
 model = ChatGroq(
-    model="qwen/qwen3.8-27b"
+    model="qwen/qwen3.8-27b",
+    max_tokens=500
 )
 
 prompts = {
